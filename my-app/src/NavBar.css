@@ -91,7 +91,16 @@
     font-size: 16px;
     line-height: 100%;
     letter-spacing: 0%;
-    color: #FFFFFF;    
+    color: #FFFFFF; 
+    
+    display: flex;
+    align-items: center;
             
 }
 
+.add{
+    width: 20;
+    height: 20;
+    color: #FFFFFF;
+
+}

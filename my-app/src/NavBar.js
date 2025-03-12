@@ -1,5 +1,7 @@
 import './NavBar.css';
 import hourglass from './assets/imgs/Hourglass.png';
+import add from './assets/imgs/add.png';
+
 
 
 function NavBar() {
@@ -13,7 +15,10 @@ function NavBar() {
         </div>
         <div className='buttons'>
           <button className='create-worker-button'>თანამშრომლის შექმნა</button>
-          <button className='create-task-button'>+ შექმენი ახალი დავალება</button>
+          <button className='create-task-button'>
+            <img src={add} alt='add' className='add'></img>
+            <div> შექმენი ახალი დავალება </div>
+          </button>
         </div>
         
     
