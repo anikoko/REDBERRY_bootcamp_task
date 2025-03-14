@@ -1,0 +1,84 @@
+.page-title{
+    padding-right: 120px;
+    padding-bottom: 30px;
+    padding-left: 120px;
+    width: 373px;
+    height: 41px;
+    top: 140px; 
+    left: 118px;
+
+}
+
+.filter-tool{
+    display: flex;
+    width: 688px;
+    height: 44px;
+    margin-left: 120px;
+    border-radius: 10px;
+    border-width: 1px;
+    gap: 45px;
+    border: 1px solid #DEE2E6;
+    top: 233px;
+    left: 120px;
+
+}
+
+.department-button{
+    display: flex;
+    align-items: center;
+    font-family: 'FiraGO', sans-serif;
+    color: #0D0F10;
+    border: 0px;
+    background: rgba(255, 255, 255, 0);
+    width: 199px;
+    height: 44px;
+    border-radius: 10px;
+    gap: 8px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    padding-top: 10px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+
+    
+}
+
+.priority-button{
+    display: flex;
+    align-items: center;
+    font-family: 'FiraGO', sans-serif;
+    color: #0D0F10;
+    border: 0px;
+    background: rgba(255, 255, 255, 0);
+    width: 199px;
+    height: 44px;
+    border-radius: 10px;
+    gap: 8px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    padding-top: 10px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    
+}
+
+.worker-button{
+    display: flex;
+    font-family: 'FiraGO', sans-serif;
+    color: #0D0F10;
+    border: 0px;
+    background: rgba(255, 255, 255, 0);
+    width: 200px;
+    height: 44px;
+
+    gap: 8px;
+    padding-top: 10px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    align-items: center;
+}

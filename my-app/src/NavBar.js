@@ -20,8 +20,6 @@ function NavBar() {
             <div> შექმენი ახალი დავალება </div>
           </button>
         </div>
-        
-    
      </div>
   );
 }
