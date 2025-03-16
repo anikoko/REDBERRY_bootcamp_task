@@ -99,7 +99,7 @@
 .department-button,
 .priority-button,
 .worker-button {
-    position: relative; /* Ensure the button aligns properly */
+    position: relative; 
 }
 
 .multi-select-dropdown-options {
@@ -164,6 +164,9 @@
     color: #ffffff;
     text-align: center;
     cursor: pointer;
+    align-self: flex-end; 
+    margin-top: 10px;
+    
 }
 
 .choose-button:hover {

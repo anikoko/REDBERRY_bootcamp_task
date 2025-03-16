@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./MultiSelectDropdown.css";
 import dropArrowBlack from "./assets/imgs/drop_arrow_black.png";
 
 function MultiSelectDropdown(props) {
   const [selectedOptions, setSelectedOptions] = useState(props.value || []);
-  const [isOpen, setIsOpen] = useState(false);
 
-  const onClose = () => setIsOpen(false);
+  const dropdownRef = useRef(null);
 
   const handleCheckboxChange = (optionValue) => {
     const updatedOptions = selectedOptions.includes(optionValue)
@@ -17,19 +16,32 @@ function MultiSelectDropdown(props) {
     props.onChange(updatedOptions);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        props.setOpenDropdownToNull()
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="dropdown">
     
       <button
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={props.setOpenDropdown}
         className={`${props.class}-button`}
       >
         <div>{props.label}</div>
         <img src={dropArrowBlack} alt="drop-arrow-black" />
       </button>
 
-      {isOpen && (
-      <div className="multi-select-dropdown-container" style={{ top: "100%", left: 0 }}>
+      {props.isOpen && (
+      <div ref={dropdownRef} className="multi-select-dropdown-container" style={{ top: "100%", left: 0 }}>
         <div className="multi-select-dropdown-options">
           {props.options.map((option) => (
             <div key={option.id} className={`multi-select-dropdown-option ${selectedOptions.includes(option.name) ? "selected" : ""}`}>
@@ -46,7 +58,7 @@ function MultiSelectDropdown(props) {
             </div>
           ))}
         </div>
-        <button onClick={() => onClose()} className="choose-button">
+        <button className="choose-button" onClick={props.setOpenDropdown}>
           არჩევა
         </button>
       </div>

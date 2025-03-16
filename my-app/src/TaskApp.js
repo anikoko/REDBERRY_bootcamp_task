@@ -12,8 +12,7 @@ function TaskApp() {
     { id: 6, name: "ტექნოლოგიების დეპარტამენტი" },
     { id: 7, name: "მედიის დეპარტამენტი" }
   ];
-
-  
+ 
   const priorities = [
     {"id": 1, "name": "დაბალი", "icon": "https://momentum.redberryinternship.ge/storage/priority-icons/Low.svg"},
     {"id": 2, "name": "საშუალო", "icon": "https://momentum.redberryinternship.ge/storage/priority-icons/Medium.svg"},
@@ -30,6 +29,8 @@ function TaskApp() {
   const [selectedValuesPriority, setSelectedValuesPriority] = useState([]);
   const [selectedValuesWorker, setSelectedValuesWorker] = useState([]);
 
+  const [openDropdown, setOpenDropdown] = useState(null);
+
   return (
     <div>
       <div className="page-title">დავალებების გვერდი</div>
@@ -40,6 +41,9 @@ function TaskApp() {
             onChange={setSelectedValuesDepartment}
             class='department'
             label='დეპარტამენტი'
+            isOpen={openDropdown === "department"}
+            setOpenDropdown={() => setOpenDropdown(openDropdown === "department" ? null : "department")}
+            setOpenDropdownToNull={()=> setOpenDropdown(null)}
           />
           <MultiSelectDropdown
             options={priorities}
@@ -47,6 +51,9 @@ function TaskApp() {
             onChange={setSelectedValuesPriority}
             class='priority'
             label='პრიორიტეტი'
+            isOpen={openDropdown === "priority"}
+          setOpenDropdown={() => setOpenDropdown(openDropdown === "priority" ? null : "priority")}
+          setOpenDropdownToNull={()=> setOpenDropdown(null)}
           />
           <MultiSelectDropdown
             options={workers}
@@ -54,6 +61,9 @@ function TaskApp() {
             onChange={setSelectedValuesWorker}
             class='worker'
             label='თანამშრომელი'
+            isOpen={openDropdown === "worker"}
+          setOpenDropdown={() => setOpenDropdown(openDropdown === "worker" ? null : "worker")}
+          setOpenDropdownToNull={()=> setOpenDropdown(null)}
           />
       </div>
     </div>
