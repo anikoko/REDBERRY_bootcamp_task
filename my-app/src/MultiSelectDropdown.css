@@ -93,6 +93,7 @@
     padding-bottom: 20px;
     padding-left: 30px;
     border-color: #8338EC
+    
 
 }
 
@@ -107,6 +108,9 @@
     flex-direction: column;
     max-height: 150px;
     overflow-y: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+
 }
 
 .multi-select-dropdown-option {

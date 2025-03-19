@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from "react";
 import './NavBar.css';
 import hourglass from './assets/imgs/Hourglass.png';
 import add from './assets/imgs/add.png';
 
 
 
-function NavBar() {
+function NavBar(props) {
 
 
   return (
@@ -14,7 +15,7 @@ function NavBar() {
         <img src={hourglass} alt='Hourglass' className='hourglass'></img>
         </div>
         <div className='buttons'>
-          <button className='create-worker-button'>თანამშრომლის შექმნა</button>
+          <button className='create-worker-button' onClick={()=>props.setCreateEmployee((prev)=>!prev)}>თანამშრომლის შექმნა</button>
           <button className='create-task-button'>
             <img src={add} alt='add' className='add'></img>
             <div> შექმენი ახალი დავალება </div>
