@@ -26,8 +26,6 @@ function ShowTasksApp(props) {
         return shortened;        
     }
 
-
-
   return (
     <div>
     <div className={`status-${props.status}-container`} >
@@ -45,7 +43,7 @@ function ShowTasksApp(props) {
                             <img src={task.priority.icon}></img>
                             <div className='priority-text' style={{color:  priorityColor }}>{task.priority.name}</div>
                             </div>
-                        <div className='department'>{formatDepartmentName(task.department.name)}</div>
+                       <div className='department'>{formatDepartmentName(task.department.name)}</div>
                     </div>
                     <div className='date-text'>{formatDate(task.due_date)}</div>
                 </div>

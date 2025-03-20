@@ -30,7 +30,6 @@
     padding-left: 10px;
     gap: 4px;
 
-    margin-left: 120px;
     font-family: 'FiraGO', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -43,4 +42,54 @@
     color: #343A40;
 
 
+}
+
+
+
+
+
+.show-selected-filters-container,
+.selected-filters-department,
+.selected-filters-priority,
+.selected-filters-worker{
+    display: flex;
+    gap: 8px;
+}
+
+.show-selected-filters-container{
+    margin-left: 120px;
+    align-items: center;
+}
+
+.filter-option-container{
+    display: flex;
+    gap: 4px;
+    border-radius: 43px;
+    border: 1px solid #CED4DA;
+    padding-top: 6px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    align-items: center;
+}
+
+.filter-option-text{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #343A40;
+
+}
+
+.filter-option-x-button{
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 0px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px
 }

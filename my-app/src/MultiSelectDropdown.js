@@ -15,13 +15,17 @@ function MultiSelectDropdown(props) {
 
     setSelectedOptionsTracker(updatedOptions)
   };
+
+  const handleCheckboxChangeWorker = (optionValue) => {
+    setSelectedOptionsTracker([optionValue])
+  }
   
   useEffect(() => {
     setSelectedOptions(props.values || []);
     setSelectedOptionsTracker(props.values || []);
-
+    
   }, [props.values]);
-
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -35,25 +39,13 @@ function MultiSelectDropdown(props) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // const handleSelect= () => {
-  //   return <div className="selected-filters-container">
-  //     <div>
-  //       {selectedOptions && selectedOptions.map((value)=>{
-  //         return <div className="selected-filter">
-  //           {value}
-  //         </div>
-  //       })}
-  //     </div>
-  //   </div>
-  // } 
+  const color = props.isOpen ? '#8338EC' : "#0D0F10"
 
   const surname = (option)=>{
     if (props.class==='worker'){
       return option.surname
     }
   }
-
-  const color = props.isOpen ? '#8338EC' : "#0D0F10"
 
   return ( 
     <div className="dropdown">
@@ -73,12 +65,12 @@ function MultiSelectDropdown(props) {
       <div ref={dropdownRef} className="multi-select-dropdown-container" style={{ top: "100%", left: 0 }}>
         <div className="multi-select-dropdown-options">
           {props.options.map((option) => (
-            <div key={option.id} className={`multi-select-dropdown-option ${selectedOptionsTracker.includes(option.name) ? "selected" : ""}`}>
+            <div key={option.id} className={`multi-select-dropdown-option ${(props.class==='worker' ? selectedOptionsTracker.includes(option.id) : selectedOptionsTracker.includes(option.name)) ? "selected" : ""}`}>
               <input
                 type="checkbox"
                 className="custom-checkbox"
-                checked={selectedOptionsTracker.includes(option.name)}
-                onChange={() => handleCheckboxChange(option.name)}
+                checked={props.class==='worker' ? selectedOptionsTracker.includes(option.id) : selectedOptionsTracker.includes(option.name)}
+                onChange={() => props.class==='worker' ? handleCheckboxChangeWorker(option.id) : handleCheckboxChange(option.name)}
                 id={`checkbox-${option.id}`} 
               />
               <label htmlFor={`checkbox-${option.id}`} className="multi-select-dropdown-option-label">

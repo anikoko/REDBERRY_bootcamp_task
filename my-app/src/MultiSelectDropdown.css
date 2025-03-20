@@ -57,6 +57,8 @@
     padding-left: 35px;
     align-items: center;
 }
+
+
 .dropdown {
     display: flex;
     flex-direction: column;

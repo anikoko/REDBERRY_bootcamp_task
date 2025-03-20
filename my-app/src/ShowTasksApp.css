@@ -54,16 +54,15 @@
 
 }
 .task-list {
-    width: 421px;
-    max-height: 850px; /* Adjust height based on 4 tasks */
-    overflow-y: auto; /* Enables vertical scrolling */
+    width: 431px;
+    max-height: 850px; 
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding-right: 10px; /* Prevents scrollbar from overlaying content */
+    padding-right: 10px; 
 }
 
-/* Custom scrollbar (optional) */
 .task-list::-webkit-scrollbar {
     width: 0px;
 }
@@ -114,23 +113,23 @@
 
 .department{
     width: 88px;
-height: 24px;
-border-radius: 15px;
-gap: 10px;
-padding-top: 5px;
-padding-right: 9px;
-padding-bottom: 5px;
-padding-left: 9px;
-background: #FF66A8;
-text-align: center;
-align-content: center;
+    height: 24px;
+    border-radius: 15px;
+    gap: 10px;
+    padding-top: 5px;
+    padding-right: 9px;
+    padding-bottom: 5px;
+    padding-left: 9px;
+    background: #FF66A8;
+    text-align: center;
+    align-content: center;
 
-font-family: 'FiraGO', sans-serif;
-font-weight: 400;
-font-size: 12px;
-line-height: 100%;
-letter-spacing: 0%;
-color: #FFFFFF;
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #FFFFFF;
 
 }
 
