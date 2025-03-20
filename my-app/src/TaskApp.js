@@ -236,6 +236,8 @@ function TaskApp(props) {
         departments={departments}
         createEmployeeOverlay={props.createEmployeeOverlay}
         setCreateEmployeeOverlay={props.setCreateEmployeeOverlay}
+        fetchData={fetchData}
+        setWorkers={setWorkers}
       />
     </div>
   );

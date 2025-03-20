@@ -120,6 +120,7 @@ function CreateEmployeeApp(props) {
             if (response.ok) {
                 alert("თანამშრომელი წარმატებით დაემატა!");
                 props.setCreateEmployeeOverlay(false);
+                props.fetchData('employees', props.setWorkers);
             } else {
                 alert(`Error: ${responseData.message || "An error occurred"}`);
             }
