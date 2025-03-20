@@ -92,18 +92,19 @@ function CreateEmployeeApp(props) {
         if (!isValidatedName || !isValidatedSurname || image === avatarDefault || !selectedDepartment) {
             return;
         }
-    
+        
+        const dep = props.departments.find((dep)=>dep.name==selectedDepartment)
+
         const formData = new FormData();
         formData.append("name", name);
         formData.append("surname", surname);
-        formData.append("department_id", selectedDepartment.id);
-    
-        // If the user uploaded an image, include it in the request
+        
         if (image !== avatarDefault) {
-            const response = await fetch(image);
-            const blob = await response.blob();
-            formData.append("image", blob, "avatar.png");
+            const file = document.getElementById("imageUpload").files[0];
+            formData.append("avatar", file, file.name); 
         }
+        
+        formData.append("department_id", dep.id);
     
         try {
             const response = await fetch(`${API_URL}/employees`, {
@@ -114,19 +115,20 @@ function CreateEmployeeApp(props) {
                 body: formData,
             });
     
+            const responseData = await response.json();
+    
             if (response.ok) {
                 alert("თანამშრომელი წარმატებით დაემატა!");
                 props.setCreateEmployeeOverlay(false);
             } else {
-                const errorData = await response.json();
-                alert(`შეცდომა: ${errorData.message || "მოხდა შეცდომა"}`);
+                alert(`Error: ${responseData.message || "An error occurred"}`);
             }
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("დაფიქსირდა შეცდომა. გთხოვთ, სცადოთ მოგვიანებით.");
+            alert("Error occurred. Please try again later.");
         }
     };
-    
+        
 
     return (
         <div className='overlay' style={{ display: displayOverlay }}>
