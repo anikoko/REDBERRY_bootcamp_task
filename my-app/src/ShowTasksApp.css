@@ -53,6 +53,25 @@
     padding: 20px;
 
 }
+.task-list {
+    width: 421px;
+    max-height: 850px; /* Adjust height based on 4 tasks */
+    overflow-y: auto; /* Enables vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-right: 10px; /* Prevents scrollbar from overlaying content */
+}
+
+/* Custom scrollbar (optional) */
+.task-list::-webkit-scrollbar {
+    width: 0px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+}
 
 .task-gen-info{
     width: 341x;
@@ -173,6 +192,23 @@ color: #FFFFFF;
     
 
 }
+
+.worker-img-container {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.worker-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .comments{
     display: flex;

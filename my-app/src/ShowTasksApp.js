@@ -26,10 +26,14 @@ function ShowTasksApp(props) {
         return shortened;        
     }
 
+
+
   return (
     <div>
     <div className={`status-${props.status}-container`} >
         <div className='status-text' style={{background: props.color}}>{props.statusText}</div>
+        <div className="task-list">
+
         {props.tasks && props.tasks.map((task)=>{
             if (task.status.name==props.statusText) {
                 const priorityColor = task.priority.id==1 ?  '#08A508' : (task.priority.id==2? '#FFBE0B' : '#FA4D4D')
@@ -50,7 +54,10 @@ function ShowTasksApp(props) {
                     <div className='task-discription'>{task.description}</div>
                 </div>
                 <div className='task-worker-and-comment'>
-                    <img src={task.employee.avatar} alt='worker-img'></img>
+                <div className="worker-img-container">
+                    <img src={task.employee.avatar} alt="worker-img" />
+                </div>
+
                     <div className='comments'>
                         <img src={comments} alt='comment-icon'></img>
                         <div className='comment-text'>
@@ -61,6 +68,7 @@ function ShowTasksApp(props) {
                 
             </div>}
         })}
+        </div>
     </div>
     </div>
   );

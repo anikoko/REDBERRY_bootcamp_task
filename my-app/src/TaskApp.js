@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import MultiSelectDropdown from "./MultiSelectDropdown";
 import ShowTasksApp from "./ShowTasksApp";
+import CreateEmployeeApp from "./CreateEmployeeApp";
 import "./TaskApp.css";
 
 const API_URL = "https://momentum.redberryinternship.ge/api";
 const TOKEN = "9e75f618-7888-45c1-acc4-e9e0681adaf8";
 
-function TaskApp() {
+function TaskApp(props) {
   const [departments, setDepartments] = useState()
   const [priorities, setPriorities] = useState()
   const [workers, setWorkers] = useState()
@@ -97,8 +98,6 @@ function TaskApp() {
   
   }, [tasks, selectedValuesDepartment, selectedValuesPriority, selectedValuesWorker]);
   
-  
-  
   return (
     <div>
       <div className="page-title">დავალებების გვერდი</div>
@@ -173,6 +172,11 @@ function TaskApp() {
         />
       </div>
       </div>
+      <CreateEmployeeApp 
+        departments={departments}
+        createEmployeeOverlay={props.createEmployeeOverlay}
+        setCreateEmployeeOverlay={props.setCreateEmployeeOverlay}
+      />
     </div>
   );
 }
