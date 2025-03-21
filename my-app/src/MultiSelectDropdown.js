@@ -47,6 +47,8 @@ function MultiSelectDropdown(props) {
     }
   }
 
+  const showImg = props.class==='worker' ? true : false
+
   return ( 
     <div className="dropdown">
     
@@ -74,7 +76,13 @@ function MultiSelectDropdown(props) {
                 id={`checkbox-${option.id}`} 
               />
               <label htmlFor={`checkbox-${option.id}`} className="multi-select-dropdown-option-label">
+                <div className='employee-img-container'>
+                  <img src={option.avatar}></img>
+                </div>
+                <div>
+
                 {option.name} {surname(option)}
+                </div>
               </label>
             </div>
           ))}
