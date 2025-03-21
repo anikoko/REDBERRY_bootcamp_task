@@ -64,7 +64,7 @@ function App() {
       setCreateEmployeeOverlay={setCreateEmployeeOverlay}
       />  
       <Routes>
-        <Route path="/" element={
+        <Route path="" element={
           <TaskApp
               departments={departments}
               priorities={priorities}
