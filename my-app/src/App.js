@@ -55,7 +55,7 @@ function App() {
   return (
     <div>
 
-    <Router>
+    <Router basename="/REDBERRY_bootcamp_task">
       <NavBar 
       departments={departments}
       fetchData={fetchData}
