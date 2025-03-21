@@ -3,7 +3,7 @@ import NavBar from './NavBar';
 import TaskApp from './TaskApp';
 import InsideTaskApp from './InsideTaskApp';
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const API_URL = "https://momentum.redberryinternship.ge/api";
 const TOKEN = "9e75f618-7888-45c1-acc4-e9e0681adaf8";
