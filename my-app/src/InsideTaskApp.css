@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.title-description-priority-department{
+    width: 715;
+    height: 239;
+    display: flex;
+    flex-direction: column;
+    top: 140px;
+    margin-left: 121px;
+    gap: 26px;
+
+}
+
+.priority-department-title{
+    width: 715;
+    height: 105;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.priority-department{
+    display: flex;
+    gap: 18px;
+    width: 212px;
+    height: 32px;
+
+}
+
+.priority{
+    display: flex;
+    gap: 4px;
+    padding-top: 4px;
+    padding-right: 5px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    border-width: 0.5px;
+    border-radius: 3px;
+
+}
+
+.task-priority-img{
+    width: 18px;
+    height: 20px;
+
+}
+
+.priority-text{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+
+}
+
+.department{
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-radius: 15px;
+    width: 88px;
+    height: 29px;
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    align-items: center;
+
+}
+
+.title{
+    width: 715px;
+    height: 41px;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #212529;
+
+}
+
+.description{
+    width: 715px;
+    height: 108px;
+
+    display: flex;
+    gap: 10px;
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0%;
+
+}
+
+
+.details-container{
+    width: 493;
+    height: 277;
+    top: 442px;
+    margin-left: 121px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+}
+
+.details-title{
+    font-family: 'FiraGO', sans-serif;
+font-weight: 500;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #2A2A2A;
+
+}
+
+.status-details{
+    width: 493px;
+    height: 70px;
+    display: flex;
+    gap: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom-width: 1px;
+    align-items: center;
+    background-color: re;
+
+}
+
+.status,
+.employee,
+.due-date-info{
+    display: flex;
+    gap: 6px;
+    width: 164px;
+}
+
+
+
+.task-status-text{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #474747;
+
+}
+
+.employee-details{
+    width: 493px;
+    height: 70px;
+    display: flex;
+    gap: 70px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom-width: 1px;
+    align-items: center;
+    
+
+}
+
+.employee-text{
+    font-family: 'FiraGO', sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: 0%;
+color: #474747;
+
+
+}
+
+.due-date-details{
+    width: 493px;
+    height: 70px;
+    display: flex;
+    gap: 70px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom-width: 1px;
+    align-items: center;
+    
+
+}
+
+.due-date-text{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #474747;
+}

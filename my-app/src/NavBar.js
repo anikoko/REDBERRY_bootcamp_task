@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import './NavBar.css';
 import hourglass from './assets/imgs/Hourglass.png';
 import add from './assets/imgs/add.png';
+import CreateEmployeeApp from "./CreateEmployeeApp";
+
 
 
 
@@ -21,6 +23,13 @@ function NavBar(props) {
             <div> შექმენი ახალი დავალება </div>
           </button>
         </div>
+        <CreateEmployeeApp 
+        departments={props.departments}
+        createEmployeeOverlay={props.createEmployeeOverlay}
+        setCreateEmployeeOverlay={props.setCreateEmployeeOverlay}
+        fetchData={props.fetchData}
+        setWorkers={props.setWorkers}
+      />
      </div>
   );
 }

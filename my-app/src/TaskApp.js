@@ -1,60 +1,18 @@
 import React, { useState, useEffect } from "react";
 import MultiSelectDropdown from "./MultiSelectDropdown";
 import ShowTasksApp from "./ShowTasksApp";
-import CreateEmployeeApp from "./CreateEmployeeApp";
 import SingleSelectDropdown from "./SingleSelectDropdown";
 import "./TaskApp.css";
 
-const API_URL = "https://momentum.redberryinternship.ge/api";
-const TOKEN = "9e75f618-7888-45c1-acc4-e9e0681adaf8";
+
 
 function TaskApp(props) {
-  const [departments, setDepartments] = useState([])
-  const [priorities, setPriorities] = useState([])
-  const [workers, setWorkers] = useState([])
-  const [tasks, setTasks] = useState([])
-
-  const [error, setError] = useState(null);
-
-  const fetchData = async (name, setData) => {
-    try {
-      const response = await fetch(`${API_URL}/${name}`, {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
-
-      const result = await response.json();
-      setData(result)
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchData('departments', setDepartments);
-    fetchData('employees', setWorkers);
-    fetchData('priorities', setPriorities);
-  }, []);
   
   const [filteredTasks, setFilteredTasks] = useState()
 
-  useEffect(()=>{
-    fetchData('tasks', setTasks)
-  }, [])
-
   useEffect(() => {
-    setFilteredTasks(tasks);
-  }, [tasks]);
-
-
-
+    setFilteredTasks(props.tasks);
+  }, [props.tasks]);
   
   const [selectedValuesDepartment, setSelectedValuesDepartment] = useState([]);
   const [selectedValuesPriority, setSelectedValuesPriority] = useState([]);
@@ -68,14 +26,14 @@ function TaskApp(props) {
       setSelectedValuesPriority([])
       setSelectedValuesWorker([])
       
-      setFilteredTasks(tasks)
+      setFilteredTasks(props.tasks)
 
   }
 
-  let filteredTasks1 = tasks
+  let filteredTasks1 = props.tasks
 
   useEffect(() => {
-    if (!tasks || tasks.length === 0) {
+    if (!props.tasks || props.tasks.length === 0) {
       setFilteredTasks([]);
       return;
     }
@@ -85,11 +43,11 @@ function TaskApp(props) {
                         selectedValuesWorker.length > 0;
   
     if (!isFiltering) {
-      setFilteredTasks(tasks);
+      setFilteredTasks(props.tasks);
       return;
     }
   
-    const filtered = tasks.filter(task => {
+    const filtered = props.tasks.filter(task => {
       const matchesDepartment = selectedValuesDepartment.length === 0 || selectedValuesDepartment.includes(task.department.name);
       const matchesPriority = selectedValuesPriority.length === 0 || selectedValuesPriority.includes(task.priority.name);
       const matchesWorker = selectedValuesWorker.length === 0 || selectedValuesWorker.includes(task.employee.id);
@@ -99,7 +57,7 @@ function TaskApp(props) {
   
     setFilteredTasks(filtered);
   
-  }, [tasks, selectedValuesDepartment, selectedValuesPriority, selectedValuesWorker]);
+  }, [props.tasks, selectedValuesDepartment, selectedValuesPriority, selectedValuesWorker]);
 
   const handleRemovingFilterOptionWuthButton = (option, data, setData) => {
       const newData = data.filter((value)=>value!=option)
@@ -110,11 +68,6 @@ function TaskApp(props) {
                       selectedValuesPriority.length > 0 || 
                       selectedValuesWorker.length > 0;
 
-  const colors = ['#FFD86D', '#89B6FF', '#FD9A6A', '#FF66A8']
-
-  function getRandomNumber(x) {
-      return Math.floor(Math.random() * x) + 1;
-  }
 
   return (
     <div>
@@ -122,7 +75,7 @@ function TaskApp(props) {
       <div className="filters-container">
         <div className="filter-tool">
             <MultiSelectDropdown
-              options={departments}
+              options={props.departments}
               values={selectedValuesDepartment}
               onChange={setSelectedValuesDepartment}
               class='department'
@@ -132,7 +85,7 @@ function TaskApp(props) {
               setOpenDropdownToNull={()=> setOpenDropdown(null)}
             />
             <MultiSelectDropdown
-              options={priorities}
+              options={props.priorities}
               values={selectedValuesPriority}
               onChange={setSelectedValuesPriority}
               class='priority'
@@ -142,7 +95,7 @@ function TaskApp(props) {
             setOpenDropdownToNull={()=> setOpenDropdown(null)}
             />
             <MultiSelectDropdown
-              options={workers}
+              options={props.workers}
               values={selectedValuesWorker}
               onChange={setSelectedValuesWorker}
               class='worker'
@@ -181,7 +134,7 @@ function TaskApp(props) {
           </div>
           <div className="selected-filters-priority">
           {selectedValuesWorker && selectedValuesWorker.map((workerID)=>{
-            const worker = workers.filter((worker)=>workerID==worker.id)
+            const worker = props.workers.filter((worker)=>workerID==worker.id)
             console.log(worker)
             return <div className="filter-option-container">
               <div className="filter-option-text">{worker[0].name} {worker[0].surname}</div>
@@ -232,13 +185,7 @@ function TaskApp(props) {
         />
       </div>
       </div>
-      <CreateEmployeeApp 
-        departments={departments}
-        createEmployeeOverlay={props.createEmployeeOverlay}
-        setCreateEmployeeOverlay={props.setCreateEmployeeOverlay}
-        fetchData={fetchData}
-        setWorkers={setWorkers}
-      />
+      
     </div>
   );
 }

@@ -32,7 +32,7 @@ function SingleSelectDropdown({ options, value, onChange, class: className, labe
       </button>
 
       {isOpen && (
-        <div className="single-select-dropdown-container">
+        <div className={`single-select-dropdown-container-${className}`}>
           <div className="single-select-dropdown-options">
             {options.map((option) => (
               <div

@@ -1,7 +1,16 @@
 import './ShowTasksApp.css';
 import comments from './assets/imgs/Comments.png'
+import { useNavigate } from "react-router-dom";
+
 
 function ShowTasksApp(props) {
+
+    const navigate = useNavigate();
+
+    const handlePress = (task) => {
+      navigate("/task", { state: { task }  });
+    };
+
     function formatDate(dateStr) {
         const months = ["იანვ", "თებ", "მარტ", "აპრ", "მაის", "ივნ", "ივლ", "აგვ", "სექტ", "ოქტ", "ნოემ", "დეკ"];
         const [year, month, dayTime] = dateStr.split('-');
@@ -26,6 +35,8 @@ function ShowTasksApp(props) {
         return shortened;        
     }
 
+    
+
   return (
     <div>
     <div className={`status-${props.status}-container`} >
@@ -36,7 +47,7 @@ function ShowTasksApp(props) {
             if (task.status.name==props.statusText) {
                 const priorityColor = task.priority.id==1 ?  '#08A508' : (task.priority.id==2? '#FFBE0B' : '#FA4D4D')
 
-            return <div className='task-container' style={{borderColor: props.color}}>
+            return <div className='task-container' style={{borderColor: props.color}} onClick={()=>handlePress(task)}>
                 <div className='task-gen-info'>
                     <div className='priority-department'>
                         <div className='priority' style={{borderColor:  priorityColor }}>
