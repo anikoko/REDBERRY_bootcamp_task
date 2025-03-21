@@ -2,11 +2,15 @@ import './InsideTaskApp.css';
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import SingleSelectDropdown from './SingleSelectDropdown';
+import CommentsApp from './CommentsApp'
 
+const API_URL = "https://momentum.redberryinternship.ge/api";
+const TOKEN = "9e75f618-7888-45c1-acc4-e9e0681adaf8";
 
 function InsideTaskApp(props) {
-    const [selectedStatus, setSelectedStatus] = useState('')
-
+    const [selectedStatus, setSelectedStatus] = useState()
+    const [statusLabel, setStatusLabel] = useState()
+    
     const location = useLocation();
     const navigate = useNavigate();
     const task = location.state.task;
@@ -16,11 +20,16 @@ function InsideTaskApp(props) {
     const priorityColor = task.priority.id==1 ?  '#08A508' : (task.priority.id==2? '#FFBE0B' : '#FA4D4D')
 
     function formatDate(dateStr) {
-        const months = ["იანვ", "თებ", "მარტ", "აპრ", "მაის", "ივნ", "ივლ", "აგვ", "სექტ", "ოქტ", "ნოემ", "დეკ"];
         const [year, month, dayTime] = dateStr.split('-');
-        const [day, time] = dayTime.split('T')
-        return `${day} ${months[parseInt(month, 10) - 1]}, ${year}`;
-    }  
+        const [day, time] = dayTime.split('T');
+        
+        const date = new Date(`${year}-${month}-${day}`);
+        console.log(date.getDay())
+        const daysOfWeek = ["კვი", "ორშ", "სამ", "ოთხ", "ხუთ", "პარ", "შაბ"];
+        const dayOfWeek = daysOfWeek[date.getDay()];
+        
+        return `${dayOfWeek} - ${day}/${month}/${year}`;
+    }
     
     function formatDepartmentName(name){
         let depName = name.replace("დეპარტამენტი", "").trim();
@@ -39,18 +48,69 @@ function InsideTaskApp(props) {
         return shortened;        
     }
 
+  
+    // 2221
+
     useEffect(()=>{
-        setSelectedStatus(task.status.name)
+        setStatusLabel(task.status.name)
     },[])
+    
+    useEffect(()=>{
+        const handleStatusChange = async () => {
+            if (!selectedStatus || !props.statuses || !task) {
+                return;
+            }
+        
+            const status = props.statuses.find(stat => stat.name === selectedStatus);
+            
+            if (!status) {
+                alert("Invalid status selected.");
+                return;
+            }
+        
+            console.log("Updating status for task:", task.id, "to status:", status.id);
+        
+            const requestData = { status_id: status.id };
+        
+            try {
+                console.log("Sending payload:", JSON.stringify(requestData));
+        
+                const response = await fetch(`${API_URL}/tasks/${task.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `Bearer ${TOKEN}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(requestData),
+                });
+                
+                const responseText = await response.text();
+        
+                if (!response.ok) {
+                    throw new Error(`Failed to update task status. ${responseText}`);
+                }
+        
+                alert("Task status updated successfully!");
+            } catch (error) {
+                console.error("Fetch error:", error);
+                alert(`Error: ${error.message}`);
+            }
+        };
+        
+        
+        handleStatusChange()
+        // setStatusLabel(selectedStatus)
+    },[selectedStatus])
+
 
   return (
-    <div>
+    <div className='inside-task'>
 
 { isAvailable &&    <div>
         <div className='title-description-priority-department'>
             <div className='priority-department-title'>
                 <div className='priority-department'>
-                    <div className='priority' style={{borderColor:  priorityColor }}>
+                    <div className='task-priority' style={{borderColor:  priorityColor }}>
                         <img src={task.priority.icon} className='task-priority-img'></img>
                         <div className='task-priority-text' style={{color:  priorityColor }}>{task.priority.name}</div>
                     </div>
@@ -79,7 +139,7 @@ function InsideTaskApp(props) {
                         value={selectedStatus}
                         onChange={setSelectedStatus}
                         class="status"
-                        label={selectedStatus}
+                        label={statusLabel}
                         />
                     </div>
                 </div>
@@ -94,10 +154,12 @@ function InsideTaskApp(props) {
                         <div className='employee-text'>თანამშრომელი</div>
                     </div>
                     <div className='employee-info'>
-                        <img></img>
+                            <div className='employee-department'>{task.employee.department.name}</div>
                         <div className='employee-info-text'>
-                            <div className='employee-department'></div>
-                            <div className='employee-name'></div>
+                            <div className='employee-img-container'>
+                                <img src={task.employee.avatar}></img>
+                            </div>
+                            <div className='employee-name'>{task.employee.name} {task.employee.surname}</div>
                         </div>
                     </div>
                 </div>
@@ -113,14 +175,21 @@ function InsideTaskApp(props) {
                         </div>
                         <div className='due-date-text'>დავალების ვადა</div>
                     </div>
-                    <div className='due-date'></div>
+                    <div className='due-date'>{formatDate(task.due_date)}</div>
                 </div>
             </div>
 
         </div>
 
     </div>
-}    </div>
+}
+    <CommentsApp 
+        task={task}
+        API_URL={API_URL}
+        TOKEN={TOKEN}
+    />
+
+    </div>
   );
 }
 

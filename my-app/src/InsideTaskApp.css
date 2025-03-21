@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+.inside-task{
+    display: flex;
+}
+
 .title-description-priority-department{
     width: 715;
     height: 239;
@@ -31,7 +35,9 @@
 
 }
 
-.priority{
+.task-priority{
+    width: 106px;
+    height: 30px;
     display: flex;
     gap: 4px;
     padding-top: 4px;
@@ -40,6 +46,8 @@
     padding-left: 5px;
     border-width: 0.5px;
     border-radius: 3px;
+    border: 1px solid;
+    align-items: center;
 
 }
 
@@ -49,7 +57,7 @@
 
 }
 
-.priority-text{
+.task-priority-text{
     font-family: 'FiraGO', sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -87,6 +95,7 @@
     line-height: 100%;
     letter-spacing: 0%;
     color: #212529;
+    margin-top: 12px;
 
 }
 
@@ -183,6 +192,57 @@ color: #474747;
 
 }
 
+.employee-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.employee-img-container {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.employee-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.employee-info-text{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.employee-department{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+    color: #474747;
+
+
+}
+
+.employee-name{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #0D0F10;
+
+}
+
 .due-date-details{
     width: 493px;
     height: 70px;
@@ -203,4 +263,16 @@ color: #474747;
     line-height: 150%;
     letter-spacing: 0%;
     color: #474747;
+}
+
+.due_date{
+    width: 107px;
+    height: 21px;
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #0D0F10;
+    
 }
