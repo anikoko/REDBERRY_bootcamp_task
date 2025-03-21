@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/REDBERRY_bootcamp_task/static/css/main.6ccaaafd.css",
-    "main.js": "/REDBERRY_bootcamp_task/static/js/main.ae8c67ad.js",
+    "main.js": "/REDBERRY_bootcamp_task/static/js/main.4bec18f9.js",
     "static/media/firago-latin-400-normal.woff": "/REDBERRY_bootcamp_task/static/media/firago-latin-400-normal.d4fb4c8a0328371ec572.woff",
     "static/media/firago-latin-400-normal.woff2": "/REDBERRY_bootcamp_task/static/media/firago-latin-400-normal.c828063df85a5b65c0d4.woff2",
     "static/media/avatar_default_img.png": "/REDBERRY_bootcamp_task/static/media/avatar_default_img.735badfdeffc845b5a17.png",
     "index.html": "/REDBERRY_bootcamp_task/index.html",
     "main.6ccaaafd.css.map": "/REDBERRY_bootcamp_task/static/css/main.6ccaaafd.css.map",
-    "main.ae8c67ad.js.map": "/REDBERRY_bootcamp_task/static/js/main.ae8c67ad.js.map"
+    "main.4bec18f9.js.map": "/REDBERRY_bootcamp_task/static/js/main.4bec18f9.js.map"
   },
   "entrypoints": [
     "static/css/main.6ccaaafd.css",
-    "static/js/main.ae8c67ad.js"
+    "static/js/main.4bec18f9.js"
   ]
 }
